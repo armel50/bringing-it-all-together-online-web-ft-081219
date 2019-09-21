@@ -53,7 +53,7 @@ class Dog
   end
   
   def self.find_by_name(name) 
-     found = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? ,name).map do |row| 
+     found = DB[:conn].execute("SELECT * FROM dogs WHERE name = ?" ,name).map do |row| 
        self.new_from_db(row)
      end
   end
