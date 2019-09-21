@@ -60,7 +60,7 @@ class Dog
   
   def update  
     if @id 
-      DB[:conn].execute("UPDATE dogs SET name = ?, breed = ?", name, breed) 
+      DB[:conn].execute("UPDATE dogs SET name = ?, breed = ? WHERE id = ?", self.name, self.breed , self.id ) 
       self
     end
   end
