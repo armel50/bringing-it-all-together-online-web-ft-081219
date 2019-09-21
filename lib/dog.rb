@@ -43,6 +43,12 @@ class Dog
   
   def self.find_or_create_by(name:, breed:) 
     found = DB[:con].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?",name, breed) 
-    if found == []
+    if found == [] 
+      self.create(name: name, breed: breed)
+    else 
+      found.map do |row| 
+        self.new_from_db(row) 
+      end
+    end
   end
 end
