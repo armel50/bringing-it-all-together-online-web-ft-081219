@@ -56,5 +56,12 @@ class Dog
      found = DB[:conn].execute("SELECT * FROM dogs WHERE name = ?" ,name).map do |row| 
        self.new_from_db(row)
      end.first
+  end 
+  
+  def update  
+    if @id 
+      DB[:conn].execute("UPDATE dogs SET name = ?, breed = ?", name, breed) 
+      self
+    end
   end
 end
